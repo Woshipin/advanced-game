@@ -1,5 +1,6 @@
 import 'package:adventuregame/story_brain.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 void main() => runApp(AdventureGame());
 
@@ -27,13 +28,25 @@ class _StoryPageState extends State<StoryPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
+        title: const Center(
+          child: Text(
+            'SUC Story',
+            style: TextStyle(
+              fontSize: 30.0,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 50.0, horizontal: 15.0),
         constraints: BoxConstraints.expand(),
         // Add the background Image
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('assets/starry.jpg'),
+            image: AssetImage('images/abc.jpg'),
             fit: BoxFit.cover,
           ),
         ),
@@ -41,6 +54,16 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(storyBrain.getStoryBook(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 35.0,
+                      )),
+                ],
+              ),
               Expanded(
                 flex: 12,
                 child: Center(
@@ -64,11 +87,11 @@ class _StoryPageState extends State<StoryPage> {
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.red),
+                        (states) => Colors.red),
                     foregroundColor: MaterialStateProperty.resolveWith(
-                            (states) => Colors.white),
+                        (states) => Colors.white),
                     shape: MaterialStateProperty.resolveWith(
-                            (states) => BeveledRectangleBorder()),
+                        (states) => BeveledRectangleBorder()),
                   ),
                   child: Text(
                     // Get the choice 1 from storyBrain
@@ -96,11 +119,11 @@ class _StoryPageState extends State<StoryPage> {
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.resolveWith(
-                              (states) => Colors.blue),
+                          (states) => Colors.blue),
                       foregroundColor: MaterialStateProperty.resolveWith(
-                              (states) => Colors.white),
+                          (states) => Colors.white),
                       shape: MaterialStateProperty.resolveWith(
-                              (states) => BeveledRectangleBorder()),
+                          (states) => BeveledRectangleBorder()),
                     ),
                     child: Text(
                       // Get the choice 2 from storyBrain
@@ -119,4 +142,3 @@ class _StoryPageState extends State<StoryPage> {
     );
   }
 }
-
